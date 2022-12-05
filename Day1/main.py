@@ -1,16 +1,4 @@
 
-cals = []
+from pathlib import Path
 
-maxi = 0
-with open("input.txt", 'r') as fp:
-    for line in fp:
-        input = line.rstrip()
-        if len(input) == 0:
-            cals.append(maxi)
-            maxi = 0
-            continue
-        maxi += int(input)
-        
-
-            
-print(max(cals))
+print(max([sum(map(int, c.strip().split('\n'))) for c in [i for i in Path("input.txt").read_text().split('\n\n')]]))
